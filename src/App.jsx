@@ -5,6 +5,7 @@ import "react-tabs/style/react-tabs.css";
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
 import "./App.css";
+import FeedbackApp from "./components/FeedbackApp";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -13,40 +14,74 @@ function App() {
     <>
       <Tabs>
         <TabList>
-          <Tab>Title 1</Tab>
+          <Tab>Feedback</Tab>
           <Tab>Title 2</Tab>
         </TabList>
 
         <TabPanel>
-          <h2>Any content 1</h2>
+          <FeedbackApp />
         </TabPanel>
         <TabPanel>
           <h2>Any content 2</h2>
         </TabPanel>
       </Tabs>
-
-      {/* <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
     </>
   );
 }
 
 export default App;
+
+// import { Component } from 'react';
+// import { Statistics } from './Statistics/Statistics';
+// import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
+// import { Section } from './Section/Section';
+// import { Notification } from './Notification/Notification';
+
+// export class App extends Component {
+//   state = { good: 0, neutral: 0, bad: 0 };
+
+//   countTotalFeedback = () => {
+//     const { good, neutral, bad } = this.state;
+//     return good + neutral + bad;
+//   };
+
+//   countPositiveFeedbackPercentage = () => {
+//     const total = this.countTotalFeedback();
+//     const { good } = this.state;
+//     return Math.round((good / total) * 100);
+//   };
+
+//   onLeaveFeedback = option => {
+//     this.setState(prevState => ({ [option]: prevState[option] + 1 }));
+//   };
+
+//   render() {
+//     const total = this.countTotalFeedback();
+//     return (
+//       <div>
+//         <Section title="Please leave feedback">
+//           <FeedbackOptions
+//             options={Object.keys(this.state)}
+//             onLeaveFeedback={this.onLeaveFeedback}
+//           />
+//         </Section>
+
+//         <Section title="Statistics">
+//           {total ? (
+//             <Statistics
+//               good={this.state.good}
+//               neutral={this.state.neutral}
+//               bad={this.state.bad}
+//               total={total}
+//               positivePercentage={this.countPositiveFeedbackPercentage()}
+//             />
+//           ) : (
+//             <Notification message="There is no feedback" />
+//           )}
+//         </Section>
+//       </div>
+//     );
+//   }
+// }
+
+// export default App;
