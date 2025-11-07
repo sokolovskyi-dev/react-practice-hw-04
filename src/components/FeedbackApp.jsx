@@ -22,26 +22,40 @@ const FeedbackApp = () => {
   };
 
   const onLeaveFeedback = (option) => {
-    this.setState((prevState) => ({ [option]: prevState[option] + 1 }));
+    // this.setState((prevState) => ({ [option]: prevState[option] + 1 }));
+
+    switch (option) {
+      case "good":
+        setGood(good + 1);
+        break;
+
+      case "neutral":
+        setNeutral(neutral + 1);
+        break;
+
+      case "bad":
+        setBad(bad + 1);
+        break;
+    }
   };
 
   return (
     <div>
       <Section title="Please leave feedback">
         <FeedbackOptions
-          options={Object.keys(this.state)}
-          onLeaveFeedback={this.onLeaveFeedback}
+          options={["good", "neutral", "bad"]}
+          onLeaveFeedback={onLeaveFeedback}
         />
       </Section>
 
       <Section title="Statistics">
         {total ? (
           <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
+            good={good}
+            neutral={neutral}
+            bad={bad}
             total={total}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
+            positivePercentage={countPositiveFeedbackPercentage()}
           />
         ) : (
           <Notification message="There is no feedback" />
